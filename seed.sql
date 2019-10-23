@@ -1,0 +1,22 @@
+INSERT INTO users(name,password) VALUES();
+
+INSERT INTO ingredients(ingredient_name) VALUES ('whole chicken');
+INSERT INTO ingredients(ingredient_name) VALUES ('chicken thigh');
+INSERT INTO ingredients(ingredient_name) VALUES ('chicken breast');
+INSERT INTO ingredients(ingredient_name) VALUES ('eggs');
+INSERT INTO ingredients(ingredient_name) VALUES ('chicken stock');
+INSERT INTO ingredients(ingredient_name) VALUES ('heavy cream');
+INSERT INTO ingredients(ingredient_name) VALUES ('tomato sauce');
+INSERT INTO ingredients(ingredient_name) VALUES ('tomato paste');
+INSERT INTO ingredients(ingredient_name) VALUES ('thyme');
+INSERT INTO ingredients(ingredient_name) VALUES ('taraggon');
+INSERT INTO ingredients(ingredient_name) VALUES ('rosemary');
+INSERT INTO ingredients(ingredient_name) VALUES ('dill');
+INSERT INTO ingredients(ingredient_name) VALUES ('salmon fillet');
+INSERT INTO ingredients(ingredient_name) VALUES ('sea bass fillet');
+INSERT INTO ingredients(ingredient_name) VALUES ('white wine');
+INSERT INTO ingredients(ingredient_name) VALUES ('red wine');
+INSERT INTO ingredients(ingredient_name) VALUES ('carrots');
+INSERT INTO ingredients(ingredient_name) VALUES ('onions');
+INSERT INTO ingredients(ingredient_name) VALUES ('celery');
+INSERT INTO ingredients(ingredient_name) VALUES ('potatoes');
