@@ -2,13 +2,20 @@ module.exports = (app, allModels) => {
 
   // declaring the require function for the routes
   const ingredientsControllerCallbacks = require('./controllers/recipe.js')(allModels);
-  // const userLoginControllerCallbacks = require('./controllers/login')(allModels);
-  // const tweetsControllerCallbacks = require('./controllers/tweets')(allModels);
+  const userControllerCallbacks = require('./controllers/user')(allModels);
 
+app.get('/recipes/new',ingredientsControllerCallbacks.recipeFormRenderCall);
 
-app.get('/ingredients',ingredientsControllerCallbacks.ingredientsCallback)
+app.get('/ingredients',ingredientsControllerCallbacks.ingredientsCallback);
   //
   // // renders reg form
+app.get('/register', userControllerCallbacks.newUser);
+
+app.post('/register', userControllerCallbacks.userCreate);
+
+app.get('/login', userControllerCallbacks.userLogin);
+
+app.post('/login', userControllerCallbacks.userLoggedIn);
   // app.get('/register', userRegistrationControllerCallbacks.renderRegistrationForm);
   // app.post('/register', userRegistrationControllerCallbacks.registerUser);
   //

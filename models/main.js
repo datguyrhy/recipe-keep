@@ -3,9 +3,9 @@ module.exports = (dbPoolInstance) => {
 
 
 
-  //return datavase of ingredients
+  //return database of ingredients
   let ingredientsCall = (callback)=>{
-    let query = "SELECT*FROM ingredients";
+    let query = "SELECT ingredient_name FROM ingredients";
     dbPoolInstance.query(query, (err, queryResult) => {
       if( err ){
 

@@ -50,6 +50,8 @@ pool.on('error', function (err) {
 /// this controls callback for POOL queries AKA database//////
 const allModelsFunction = require('./models/main');
 const somethingModelsObject = allModelsFunction( pool );
+const allUserModelsFunction = require('./models/user');
+const userModelsObject = allUserModelsFunction( pool );
 
 // const registerUser = require('./models/register');
 // const userRegistration = registerUser( pool );
@@ -86,7 +88,8 @@ module.exports = {
   /*
    * ADD APP MODELS HERE
    */
-ingredients:somethingModelsObject
+ingredients:somethingModelsObject,
+user: userModelsObject
   // users: userModelsObject,
   // pokemon: pokemonModelsObject,
   // userRegistration: userRegistration,

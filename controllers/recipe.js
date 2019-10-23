@@ -1,27 +1,54 @@
 module.exports = db => {
-/// call table
-
-/// listens for request and respond with form
-  let recipeFormRenderCall = (req, res) => {
-    res.render("recipe/form");
-  };
-
+/////////////////////////////////////////////////////
 let ingredientsCallback = (req,res)=>{
 
-  db.ingredients.ingredientsCall((err,queryResult)=>{
-    let data = {queryResult}[0].ingredient_name;
-    console.log(data);
-    res.send(data)
-})
-
+  db.ingredients.ingredientsCall((err,result)=>{
+    data = {
+      result: result
+    }
+      console.log(data);
+      let getIngredientName = (result)=>{
+      return result.ingredient_name;
+    }
+    var tempArr = data.result.map(getIngredientName);
+    // let render = (req,res)=>{
+    //   let x = document.createElement('button');
+    //   x.style.value =tempArr;
+    //   document.body.appendChild(x);
+    // }
+    res.send(tempArr)
+    // console.log(tempArr);
+});
 
 };
-  // res.send('/ingredients', {result});
+////////////////////////////////////////////////////////////
+/// listens for request and respond with form
+  let recipeFormRenderCall = (req, res) => {
+    db.ingredients.ingredientsCall((err,result)=>{
+      let data = result;
+
+      console.log(data);
+      // let data = {queryResult};
+      // res.send(data);
+      //   console.log(data.result);
+      //   let getIngredientName = (result)=>{
+      //   return result.ingredient_name;
+      // }
+      // var tempArr = data.result.map(getIngredientName);
+
+        res.render("addRecipe",data);
+  })
+  };
+////////////////////////////////////////////////
+
+////////////////////////////////////////////////
+
 
 
 
 /// name your functions
   return{
+    recipeFormRenderCall:recipeFormRenderCall,
     ingredientsCallback:ingredientsCallback
   };
 };
