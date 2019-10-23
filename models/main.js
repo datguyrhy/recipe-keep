@@ -26,8 +26,46 @@ module.exports = (dbPoolInstance) => {
       }
     });
   };
+  let recipesShowAll = (value, callback) => {
+    const queryArray = [value];
+    const queryString = 'SELECT * FROM recipes WHERE id = $1';
 
+    dbPoolInstance.query(queryString, queryArray, (error, queryResult) => {
+      if( error ){
+        // invoke callback function with results after query has executed
+        callback(error, null);
+      }else{
+        // invoke callback function with results after query has executed
+        if( queryResult.rows.length > 0 ){
+          callback(null, queryResult.rows);
+        }else{
+          callback(null, null);
+        }
+      }
+    });
+  };
+
+  let recipesDelete = (value, callback) => {
+    const queryArray = [parseInt(values)];
+    const queryString = 'DELETE FROM recipes WHERE id = $1 RETURNING *';
+
+    dbPoolInstance.query(queryString, queryArray, (error, queryResult) => {
+      if( error ){
+        // invoke callback function with results after query has executed
+        callback(error, null);
+      }else{
+        // invoke callback function with results after query has executed
+        if( queryResult.rows.length > 0 ){
+          callback(null, queryResult.rows);
+        }else{
+          callback(null, null);
+        }
+      }
+    });
+  };
   return {
-    ingredientsCall
+    ingredientsCall,
+    recipesShowAll,
+    recipesDelete
   };
   };
