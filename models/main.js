@@ -1,3 +1,6 @@
+const sha256 = require('js-sha256');
+const salt = 'wow';
+
 module.exports = (dbPoolInstance) => {
 ////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////INGREDIENTS MODELS///////////////////////
@@ -52,11 +55,10 @@ module.exports = (dbPoolInstance) => {
 ////////////////////////////////////////////////////////////////////////////
 ///////////////////////RECIPES//////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
-  let recipesShowAll = (value, callback) => {
-    const queryArray = [value];
-    const queryString = 'SELECT * FROM recipes WHERE id = $1';
+  let recipesShowAll = (callback) => {
+    const queryString = 'SELECT * FROM recipes';
 
-    dbPoolInstance.query(queryString, queryArray, (error, queryResult) => {
+    dbPoolInstance.query(queryString, (error, queryResult) => {
       if( error ){
         // invoke callback function with results after query has executed
         callback(error, null);

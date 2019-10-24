@@ -4,6 +4,8 @@ module.exports = (app, allModels) => {
   const ingredientsControllerCallbacks = require('./controllers/recipe.js')(allModels);
   const userControllerCallbacks = require('./controllers/user')(allModels);
 
+
+app.get('/recipes/all',ingredientsControllerCallbacks.recipeAllShow);
 app.get('/recipes/new',ingredientsControllerCallbacks.recipeFormRenderCall);
 app.post('/recipes/add',ingredientsControllerCallbacks.addRecipe);
 app.get('/recipes/delete', ingredientsControllerCallbacks.recipeDelete);

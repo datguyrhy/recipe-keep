@@ -1,5 +1,5 @@
 const React = require('react');
-
+const Navbar = require("./Nav/navbar.jsx");
 class AddIngredient extends React.Component {
   render(){
 
@@ -14,12 +14,12 @@ class AddIngredient extends React.Component {
           ></link>
         </head>
       <body>
-        <div>
-          <h1>Adding New Ingredient</h1>
+        <Navbar/>
+        <div className="container-fluid">
+          <h2>Adding New Ingredient</h2>
           <form method="POST" action="/ingredients/new">
             Ingredient:&ensp;
             <input type="text" name="ingredient" value="" required/><br/>
-            <br/>
             <br/>
             <input type="submit"/>
           </form>

@@ -1,3 +1,7 @@
+const sha256 = require('js-sha256');
+const salt = 'wow';
+
+
 module.exports = db => {
     /////////////////////////////////////////////////////
     let ingredientsCallback = (req, res) => {
@@ -65,6 +69,17 @@ module.exports = db => {
         // response.render('tweets/addNewSuccess', { newTweet });
       });
     };
+
+
+    let recipeAllShow = (req,res)=>{
+      db.ingredients.recipesShowAll((err,result)=>{
+        let list = {
+          recipelist: result
+        }
+      // console.log(list.recipelist);
+      res.render("RecipeShowAll",list)
+      });
+    };
     ////////////////////////////////////////////////
     ////////////////////DELETE RECIPE///////////////
     ////////////////////////////////////////////////
@@ -79,6 +94,7 @@ module.exports = db => {
 
     /// name your functions
     return {
+        recipeAllShow: recipeAllShow,
         recipeFormRenderCall: recipeFormRenderCall,
         addRecipe:addRecipe,
         recipeDelete:recipeDelete,
