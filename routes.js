@@ -5,9 +5,11 @@ module.exports = (app, allModels) => {
   const userControllerCallbacks = require('./controllers/user')(allModels);
 
 app.get('/recipes/new',ingredientsControllerCallbacks.recipeFormRenderCall);
-
+app.post('/recipes/add',ingredientsControllerCallbacks.addRecipe);
+app.get('/recipes/delete', ingredientsControllerCallbacks.recipeDelete);
 app.get('/ingredients',ingredientsControllerCallbacks.ingredientsCallback);
-  //
+app.get('/ingredients/add', ingredientsControllerCallbacks.newIngredientForm);
+app.post('/ingredients/new',ingredientsControllerCallbacks.addNewIngredient);
   // // renders reg form
 app.get('/register', userControllerCallbacks.newUser);
 
