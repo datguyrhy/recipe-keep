@@ -21,7 +21,7 @@ class AddIngredient extends React.Component {
             Ingredient:&ensp;
             <input type="text" name="ingredient" value="" required/><br/>
             <br/>
-            <input type="submit"/>
+            <button class="btn btn-outline-info my-2 my-sm-0 text-left" type="submit">Add</button>
           </form>
 
         </div>

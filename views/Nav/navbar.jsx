@@ -7,7 +7,7 @@ class Navbar extends React.Component {
       <nav className="navbar navbar-expand-lg navbar-light " style={{
         backgroundColor: "#ff78ae"
       }}>
-      <a class="navbar-brand mb-0 h1" href="#">Recipedia</a>
+      <a href="/" class="navbar-brand mb-0 h1">Recipedia</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -29,7 +29,7 @@ class Navbar extends React.Component {
             <a class="nav-link" href="/ingredients/add">Add Ingredients</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/ingredients">Ingredients</a>
+            <a class="nav-link" href="/ingredients/all">Ingredients</a>
           </li>
         </ul>
         <form method="POST" action="/logout" class="form-inline my-2 my-lg-0">

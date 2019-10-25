@@ -1,4 +1,5 @@
 const React = require('react');
+const Navbar = require(".././Nav/navbar.jsx");
 
 class Create extends React.Component {
   render(){

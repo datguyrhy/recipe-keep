@@ -7,7 +7,7 @@ module.exports = (dbPoolInstance) => {
 ////////////////////////////////////////////////////////////////////////////
   //return database of ingredients
   let ingredientsCall = (callback)=>{
-    let query = "SELECT ingredient_name FROM ingredients";
+    let query = "SELECT * FROM ingredients";
     dbPoolInstance.query(query, (err, queryResult) => {
       if( err ){
 
@@ -55,6 +55,32 @@ module.exports = (dbPoolInstance) => {
 ////////////////////////////////////////////////////////////////////////////
 ///////////////////////RECIPES//////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
+
+  let addRecipe = (request,callback)=>{
+    // console.log(request.body);
+    let input = [request.body.title, request.body.ingredients, request.body.instructions]
+    let query = 'INSERT INTO recipes (title,ingredients,instructions) VALUES ($1,$2,$3) RETURNING *';
+    dbPoolInstance.query(query, input, (err, queryResult) => {
+      if( err ){
+
+        // invoke callback function with results after query has executed
+        callback(err, null);
+
+      }else{
+
+        // invoke callback function with results after query has executed
+
+        if( queryResult.rows.length > 0 ){
+          callback(null, queryResult.rows);
+
+        }else{
+          callback(null, null);
+
+        }
+      }
+    });
+  };
+
   let recipesShowAll = (callback) => {
     const queryString = 'SELECT * FROM recipes';
 
@@ -92,34 +118,31 @@ module.exports = (dbPoolInstance) => {
     });
   };
 
-  let addRecipe = (request,callback)=>{
-    // console.log(request.body);
-    let input = [request.body.title, request.body.ingredients, request.body.instructions]
-    let query = 'INSERT INTO recipes (title,ingredients,instructions) VALUES ($1,$2,$3) RETURNING *';
-    dbPoolInstance.query(query, input, (err, queryResult) => {
-      if( err ){
 
+  let recipeShow = (value, callback) => {
+    const queryArray = [parseInt(value)];
+    const queryString = 'SELECT id,title,ingredients,instructions FROM recipes WHERE id =$1';
+    // console.log(queryArray);
+    dbPoolInstance.query(queryString, queryArray, (error, queryResult) => {
+      if( error ){
         // invoke callback function with results after query has executed
-        callback(err, null);
-
+        callback(error, null);
       }else{
-
         // invoke callback function with results after query has executed
-
         if( queryResult.rows.length > 0 ){
           callback(null, queryResult.rows);
-
         }else{
           callback(null, null);
-
         }
       }
     });
   };
+
   return {
     ingredientsCall,
     addIngredient,
     addRecipe,
+    recipeShow,
     recipesShowAll,
     recipeDelete
   };

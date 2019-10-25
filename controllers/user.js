@@ -3,8 +3,12 @@ const salt = 'wow';
 
 module.exports = (db) => {
 
+    let landingRender = (req,res)=>{
+      res.render('landing')
+    };
+
     let newUserCallback = (req, res) => {
-        res.render('users/new');
+        res.render('users/register');
     };
 
     let userCreateCallback = (req, res) => {
@@ -34,7 +38,7 @@ module.exports = (db) => {
                         res.cookie('user_id', user_id);
                         res.cookie('hasLoggedIn', hashedCookie);
                         res.cookie('username', req.body.username);
-                        res.redirect('/recipes/new');
+                        res.redirect('/home');
                     } else {
                         res.status(403).send('wrong password');
                     }
@@ -51,6 +55,7 @@ module.exports = (db) => {
      * ===========================================
      */
     return {
+        landingRender:landingRender,
         userCreate: userCreateCallback,
         newUser: newUserCallback,
         userLogin: userLoginCallback,

@@ -1,6 +1,7 @@
 const React = require('react');
+const Navbar = require(".././Nav/navbar.jsx");
 
-class New extends React.Component {
+class Register extends React.Component {
   render(){
 
     return(
@@ -12,7 +13,7 @@ class New extends React.Component {
             <input type="text" name="username"/><br/><br/>
             <p>Password</p>
             <input type="text" name="password"/><br/><br/>
-            <input type="submit" value="create account"/>
+          <button class="btn btn-outline-info my-2 my-sm-0 text-left" type="submit" value="Create Account">Login</button>
           </form>
         </body>
       </html>
@@ -20,4 +21,4 @@ class New extends React.Component {
   }
 }
 
-module.exports = New;
+module.exports = Register;

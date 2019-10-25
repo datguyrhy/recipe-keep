@@ -4,11 +4,11 @@ const Navbar = require("./Nav/navbar.jsx");
 class Addrecipe extends React.Component {
   render() {
     let ingredientsObj = this.props.result
-    let newArray = ingredientsObj.map((ing) => {
+    let ingredientsArray = ingredientsObj.map((ing) => {
       return (
       // console.log(ing)
       <div className="col-4 d-inline-flex align-items-center justify-content-start flex-wrap">
-        <input name="ingredients" type="checkbox" value={ing.ingredient_name}/>{ing.ingredient_name}
+        <h5><input name="ingredients" type="checkbox" value={ing.ingredient_name}/>{ing.ingredient_name}</h5>
       </div>)
     })
 
@@ -26,7 +26,7 @@ class Addrecipe extends React.Component {
               Dish Name:&ensp;
               <input type="text" className=".form-control" name="title"/><br/>
               <br/>
-              {newArray}
+              {ingredientsArray}
 
               <div className="row">
                 <div className="col">
@@ -34,7 +34,7 @@ class Addrecipe extends React.Component {
                   <p>Instructions:</p>
                   <textarea className=".form-control" name="instructions" rows="10" cols="60" required="required"></textarea>
                   <br/>
-                  <input type="submit"/>
+                      <button class="btn btn-outline-info my-2 my-sm-0 text-left" type="submit">Add recipe</button>
                 </div>
               </div>
             </form>

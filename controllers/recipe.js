@@ -3,15 +3,23 @@ const salt = 'wow';
 
 
 module.exports = db => {
+
+
+
+  let homePage =(req,res)=>{
+    res.render('home')
+  };
+
+
     /////////////////////////////////////////////////////
     let ingredientsCallback = (req, res) => {
 
         db.ingredients.ingredientsCall((err, result) => {
             data = {
-                result: result
+                ingredients: result
             }
             console.log(data);
-            res.render(data)
+            res.render('ingredientsAll',data)
         });
 
     };
@@ -29,14 +37,13 @@ module.exports = db => {
         if (err) {
           console.log("Error!", err);
         } else {
-          const data = {
-            message: "Ingredient Added",
-          };
 
-          res.send(data.message);
+          res.redirect('/ingredients/all');
         }
       });
     };
+
+
     ////////////////////////////////////////////////////////////
     /// listens for request and respond with form
     let recipeFormRenderCall = (req, res) => {
@@ -54,7 +61,6 @@ module.exports = db => {
       let user_name = request.cookies.user_name;
       console.log(request.body);
       request.body.ingredients = request.body.ingredients.join(",");
-      console.log(request.body);
       db.ingredients.addRecipe(request, (err) => {
         if (err) {
           console.log("Error!", err);
@@ -64,7 +70,7 @@ module.exports = db => {
           //   request
           // };
 
-          response.send('yay added recipe');
+          response.redirect('/recipes/all');
         }
         // response.render('tweets/addNewSuccess', { newTweet });
       });
@@ -80,6 +86,28 @@ module.exports = db => {
       res.render("RecipeShowAll",list)
       });
     };
+
+
+      let recipeShow = (req,res)=>{
+        console.log("heyyyyyyyyyyyyyyyyyy");
+        // console.log(req.params.id);
+      db.ingredients.recipeShow(req.params.id,(err,result)=>{
+        if(err){
+
+          console.log(err);
+
+        }else{
+          // console.log(result);
+          let list = {
+            recipe: result
+          }
+          res.render("recipeShow",list)
+        }
+
+      });
+    };
+
+
     ////////////////////////////////////////////////
     ////////////////////DELETE RECIPE///////////////
     ////////////////////////////////////////////////
@@ -94,6 +122,8 @@ module.exports = db => {
 
     /// name your functions
     return {
+        homePage:homePage,
+        recipeShow:recipeShow,
         recipeAllShow: recipeAllShow,
         recipeFormRenderCall: recipeFormRenderCall,
         addRecipe:addRecipe,

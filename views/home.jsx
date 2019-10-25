@@ -1,29 +1,7 @@
 var React = require("react");
-const Navbar = require("./navbar.jsx");
-const Script = require("./script")
+const Navbar = require("./Nav/navbar.jsx");
 class Home extends React.Component {
   render() {
-    let recipeArr = this.props.recipe
-    let ing = []
-    let allRecipe = recipeArr.map(item => {
-      ing.push(item.ingredients)
-      return (
-        <div className="card">
-          <div className="card-body">
-            <h3 className="card-title">{item.name}</h3>
-            <p className="card-text">
-              <strong>Ingredients: </strong> {(item.ingredients)}
-            </p>
-            <a href={"/" + (recipeArr.indexOf(item) + 1) } className="btn btn-primary">
-              See Recipe
-            </a>
-          </div>
-        </div>
-      );
-    });
-    let half = Math.ceil(allRecipe.length / 2);
-    let leftSide = allRecipe.slice(0, half);
-    let rightSide = allRecipe.slice(half, allRecipe.length);
     return (
       <html>
         <head>
@@ -33,23 +11,30 @@ class Home extends React.Component {
             integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
             crossOrigin="anonymous"
           ></link>
-
-         
         </head>
         <body>
          <Navbar/>
-          <div className="container pt-5">
-            <h1 className="text-center display-2 border-bottom">Find a Recipe</h1>
-            <div className="container pt-4">
-           
+          <div className="container-fluid">
             <div className="row">
-              <div className="col">{leftSide}</div>
-              <div className="col">{rightSide}</div>
+              <div class="card bg-dark text-white">
+                <img src="https://i.imgur.com/a2gSdFb.jpg" class="card-img" alt="..."/>
+                <div className="card-img-overlay">
+                  <h5 className="card-title">Card title</h5>
+                  <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p className="card-text">Last updated 3 mins ago</p>
+                </div>
+              </div>
             </div>
-            </div>
-           
+            <br/>
+            <br/>
+            <button class="btn btn-outline-info my-2 my-sm-0 text-left"><a href="/recipes/all" class="text-decoration-none" >Recipedia</a></button>
+            &ensp;&ensp;&ensp;&ensp;&ensp;
+            <button class="btn btn-outline-info my-2 my-sm-0 text-left"><a href="/recipes/new" class="text-decoration-none" >New Recipe</a></button>
+            &ensp;&ensp;&ensp;&ensp;&ensp;
+            <button class="btn btn-outline-info my-2 my-sm-0 text-left"><a href="/ingredients/all" class="text-decoration-none" >Ingredients list</a></button>
           </div>
-          <Script/>
+
+
         </body>
       </html>
     );
