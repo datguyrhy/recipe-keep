@@ -8,7 +8,7 @@ app.get('/',userControllerCallbacks.landingRender);
 app.get('/home',ingredientsControllerCallbacks.homePage);
 app.get('/recipes/all',ingredientsControllerCallbacks.recipeAllShow);
 app.get('/recipes/new',ingredientsControllerCallbacks.recipeFormRenderCall);
-app.post('/recipes/add',ingredientsControllerCallbacks.addRecipe);
+app.post('/recipes/add',ingredientsControllerCallbacks.addRecipe,ingredientsControllerCallbacks.addIngToRecipe);
 app.get('/recipes/:id',ingredientsControllerCallbacks.recipeShow);
 app.get('/recipes/delete', ingredientsControllerCallbacks.recipeDelete);
 app.get('/ingredients/all',ingredientsControllerCallbacks.ingredientsCallback);

@@ -18,3 +18,10 @@ CREATE TABLE IF NOT EXISTS ingredients(
   id SERIAL PRIMARY KEY,
   ingredient_name TEXT
   );
+
+CREATE TABLE IF NOT EXISTS ingredToRecipe(
+  id SERIAL PRIMARY KEY,
+  recipe_id INTEGER,
+  ingredient_id INTEGER,
+  ingredient_qty INTEGER
+  )

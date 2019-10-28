@@ -57,11 +57,26 @@ module.exports = db => {
 
     };
 
+    // let addIngToRecipe = (ingredient,response)=>{
+    //
+    //   let ingredientResult = request.body.ingredients
+    //   db.ingredients.addIngToRecipe(ingredientResult,(err)=>{
+    //     if (err) {
+    //       console.log("Error!", err);
+    //     } else {
+    //     console.log("added ingredients to RL table");
+    //     console.log(ingredientResult);
+    //   }
+    // });
+    // }
+
+
     let addRecipe = (request, response) => {
-      let user_name = request.cookies.user_name;
-      console.log(request.body);
-      request.body.ingredients = request.body.ingredients.join(",");
+
+
+      // request.body.ingredients = request.body.ingredients.join(",");
       db.ingredients.addRecipe(request, (err) => {
+
         if (err) {
           console.log("Error!", err);
         } else {
@@ -69,11 +84,24 @@ module.exports = db => {
           // const data = {
           //   request
           // };
+          let user_name = request.cookies.user_name;
+          console.log(request.body);
+          console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiii");
+            let x = request.body.ingredients
+            db.ingredients.addIngToRecipe(x,(err)=>{
+            if (err) {
+              console.log("Error!", err);
+            } else {
+            console.log("added ingredients to RL table");
+            console.log(x);
+          }
+        });
 
           response.redirect('/recipes/all');
         }
-        // response.render('tweets/addNewSuccess', { newTweet });
+
       });
+
     };
 
 
@@ -122,6 +150,7 @@ module.exports = db => {
 
     /// name your functions
     return {
+        addIngToRecipe:addRecipe,
         homePage:homePage,
         recipeShow:recipeShow,
         recipeAllShow: recipeAllShow,

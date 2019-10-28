@@ -5,10 +5,11 @@ class Addrecipe extends React.Component {
   render() {
     let ingredientsObj = this.props.result
     let ingredientsArray = ingredientsObj.map((ing) => {
-      return (
       // console.log(ing)
+      return (
+
       <div className="col-4 d-inline-flex align-items-center justify-content-start flex-wrap">
-        <h5><input name="ingredients" type="checkbox" value={ing.ingredient_name}/>{ing.ingredient_name}</h5>
+        <h5><input name="ingredients" type="checkbox" value={ing.id}/>{ing.ingredient_name}</h5>
       </div>)
     })
 
@@ -27,12 +28,12 @@ class Addrecipe extends React.Component {
               <input type="text" className=".form-control" name="title"/><br/>
               <br/>
               {ingredientsArray}
-
+              <br/>
               <div className="row">
                 <div className="col">
                   <br/>
                   <p>Instructions:</p>
-                  <textarea className=".form-control" name="instructions" rows="10" cols="60" required="required"></textarea>
+                  <textarea className=".form-control" name="instructions" rows="10" cols="60" ></textarea>
                   <br/>
                       <button class="btn btn-outline-info my-2 my-sm-0 text-left" type="submit">Add recipe</button>
                 </div>
