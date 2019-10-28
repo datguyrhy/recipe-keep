@@ -10,13 +10,12 @@ CREATE TABLE IF NOT EXISTS recipes(
   title TEXT,
   ingredients TEXT,
   instructions TEXT,
-  user_id  INTEGER,
-  ingredient_id  INTEGER
+  user_id  INTEGER
   );
 
 CREATE TABLE IF NOT EXISTS ingredients(
   id SERIAL PRIMARY KEY,
-  ingredient_name TEXT
+  ingredient_name TEXT UNIQUE
   );
 
 CREATE TABLE IF NOT EXISTS ingredToRecipe(
