@@ -8,7 +8,6 @@ CREATE TABLE IF NOT EXISTS users(
 CREATE TABLE IF NOT EXISTS recipes(
   id SERIAL PRIMARY KEY,
   title TEXT,
-  ingredients TEXT,
   instructions TEXT,
   user_id  INTEGER
   );
