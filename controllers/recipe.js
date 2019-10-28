@@ -18,7 +18,7 @@ module.exports = db => {
             data = {
                 ingredients: result
             }
-            console.log(data);
+            // console.log(data);
             res.render('ingredientsAll',data)
         });
 
