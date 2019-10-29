@@ -1,0 +1,18 @@
+.bg{
+  background-image:url(https://i.imgur.com/71rz9q4.jpg);
+  min-height: 800px;
+}
+
+a{
+  text-decoration:none;
+  color:white;
+}
+
+a:hover{
+  text-decoration:none;
+  color:white;
+}
+
+.jumbotron{
+  min-height: 400px;
+}

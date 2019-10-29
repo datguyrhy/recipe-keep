@@ -135,10 +135,30 @@ module.exports = db => {
   ////////////////////////////////////////////////
   ////////////////////DELETE RECIPE///////////////
   ////////////////////////////////////////////////
+
+  let recipeDeleteForm = (req, res) => {
+    db.ingredients.recipeShow(req.params.id, (err, result) => {
+      if (err) {
+
+        console.log(err);
+
+      } else {
+        // console.log(result);
+        let list = {
+          recipe: result
+        }
+      res.render('deleteRecipe',list)
+      }
+
+    });
+
+  };
+
+
   let recipeDelete = (req, res) => {
     // if (req.cookies.hasLoggedIn === sha256(req.cookies.user_id+salt)){
     db.ingredients.recipeDelete(req.params.id, (err, result) => {
-      res.render('deleteRecipe');
+      res.redirect('/recipes/all');
     });
 
   };
@@ -152,6 +172,7 @@ module.exports = db => {
     recipeAllShow: recipeAllShow,
     recipeFormRenderCall: recipeFormRenderCall,
     addRecipe: addRecipe,
+    recipeDeleteForm:recipeDeleteForm,
     recipeDelete: recipeDelete,
     newIngredientForm: newIngredientForm,
     addNewIngredient: addNewIngredient,

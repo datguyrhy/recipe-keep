@@ -123,8 +123,8 @@ module.exports = (dbPoolInstance) => {
 
   let addRecipe = (request, callback) => {
     // console.log(request.body);
-    let input = [request.body.title, request.body.ingredients, request.body.instructions]
-    let query = 'INSERT INTO recipes (title,ingredients,instructions) VALUES ($1,$2,$3) RETURNING *';
+    let input = [request.body.title, request.body.instructions]
+    let query = 'INSERT INTO recipes (title,instructions) VALUES ($1,$2) RETURNING *';
     dbPoolInstance.query(query, input, (err, queryResult) => {
       if (err) {
 

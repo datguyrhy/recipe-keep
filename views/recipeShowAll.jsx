@@ -7,7 +7,7 @@ class RecipeShow extends React.Component {
       let url = "/recipes/"+recipe.id;
      return (
        <div className="col-6 d-inline-flex justify-content-between">
-      <h3><a href={url}>{recipe.id}. {recipe.title}</a></h3>
+      <h3>{recipe.id}.<a href={url}> {recipe.title}</a></h3>
       </div>
      )
     });

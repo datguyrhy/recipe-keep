@@ -5,6 +5,7 @@ class RecipeShow extends React.Component {
   render() {
     let recipe = this.props.recipe;
     let recipeid = parseInt(recipe[0].id);
+    let deleteUrl = "/recipes/"+recipeid+"/delete"
     console.log(recipeid);
     // console.log(this.props);
     let ingredientsArray = recipe.map((ing) => {
@@ -35,7 +36,7 @@ class RecipeShow extends React.Component {
         &ensp;&ensp;&ensp;&ensp;&ensp;
         <button class="btn btn-outline-info my-2 my-sm-0 text-left"><a href="/ingredients/all" class="text-decoration-none" >Ingredients list</a></button>
         &ensp;&ensp;&ensp;&ensp;&ensp;
-        <button class="btn btn-outline-info my-2 my-sm-0 text-left"><a href='/recipes/delete' class="text-decoration-none" > Delete Recipe </a></button>
+        <button class="btn btn-outline-info my-2 my-sm-0 text-left"><a href={deleteUrl} class="text-decoration-none" > Delete Recipe </a></button>
 
       </body>
     </html>);
