@@ -25,7 +25,7 @@ class Addrecipe extends React.Component {
           <div className="form-group">
             <form method="POST" action="/recipes/add">
               Dish Name:&ensp;
-              <input type="text" className=".form-control" name="title"/><br/>
+              <input type="text" className=".form-control" name="title" required/><br/>
               <br/>
               {ingredientsArray}
               <br/>
@@ -33,9 +33,9 @@ class Addrecipe extends React.Component {
                 <div className="col">
                   <br/>
                   <p>Instructions:</p>
-                  <textarea className=".form-control" name="instructions" rows="10" cols="60" ></textarea>
+                  <textarea className=".form-control" name="instructions" rows="10" cols="60" required ></textarea>
                   <br/>
-                      <button class="btn btn-outline-info my-2 my-sm-0 text-left" type="submit">Add recipe</button>
+                      <button class="btn btn-outline-info my-2 my-sm-0 text-left" type="submit" >Add recipe</button>
                 </div>
               </div>
             </form>
