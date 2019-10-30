@@ -108,7 +108,7 @@ module.exports = db => {
         recipelist: result
       }
       // console.log(list.recipelist);
-      res.render("RecipeShowAll", list)
+      res.render("recipeShowAll", list)
     });
   };
 
