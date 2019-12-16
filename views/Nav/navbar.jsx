@@ -32,7 +32,7 @@ class Navbar extends React.Component {
             <a class="nav-link" href="/ingredients/all">Ingredients</a>
           </li>
         </ul>
-        
+
 
       </div>
     </nav>);

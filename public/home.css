@@ -10,18 +10,20 @@
   margin-left:10px;
 }
 
+.ing{
+  text-align:right;
+}
 .ing-2{
-  width:500px;
+  width:600px;
   height:290px;
 
 }
 
 .ing-3{
-  width:280px;
+  width:295px;
   height:290px;
 
 }
-
 
 .ing-6{
   width:280px;
@@ -41,4 +43,12 @@ a{
   color:white;
   text-decoration:none;
 
+}
+
+.home{
+  max-width: 600px;
+}
+
+.card-img{
+  background-image:"cover";
 }
